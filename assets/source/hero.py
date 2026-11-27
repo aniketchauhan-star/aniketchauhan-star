@@ -309,8 +309,8 @@ def title_block():
     name = "ANIKET CHAUHAN"
     size, ls = 66, 5
     tw = W("o9", name, size, ls)
-    role = "AI CONTENT DESIGNER  ·  UI/UX DESIGNER  ·  CODE-SAVVY"
-    sub = "@ CONVEGENIUS.AI  //  DESIGNING ENGAGING DIGITAL EXPERIENCES"
+    role = "UI/UX DESIGNER  ·  DEVELOPER  ·  AI CONTENT DESIGNER"
+    sub = "@ CONVEGENIUS.AI  //  DESIGNS THAT SHIP AS WORKING CODE"
     label = "NEO-DELHI GRID  ·  2099  ·  SYSTEM ONLINE"
     lw = W("m", label, 13, 4)
     y_name = 154
@@ -549,7 +549,7 @@ def build():
 </g>
 """
     return doc(WD, HT,
-               "Aniket Chauhan — AI Content Designer · UI/UX Designer · Code-savvy",
+               "Aniket Chauhan — UI/UX Designer & Developer · AI Content Designer",
                "Animated futuristic Neo-Delhi skyline at night: neon towers, a fluted Neo-Minar, a glowing "
                "Neo-Lotus, hover cars and a maglev train, with the holographic name Aniket Chauhan.",
                ["o9", "m", "sb"], CSS + car_css + floor_css + marq_css, body, defs)

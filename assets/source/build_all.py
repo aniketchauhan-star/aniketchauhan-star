@@ -18,8 +18,8 @@ put("career.svg", parts.career())
 put("skills.svg", parts.skills())
 for c in parts.CARDS:
     put(f"projects/{c['slug']}.svg", parts.card(c))
-for slug, label, sub, acc, ic in parts.BUTTONS:
-    put(f"buttons/{slug.replace('btn-', '')}.svg", parts.button(slug, label, sub, acc, ic))
+for slug, label, sub, acc, tint, ic in parts.BUTTONS:
+    put(f"buttons/{slug.replace('btn-', '')}.svg", parts.button(slug, label, sub, acc, tint, ic))
 put("footer.svg", parts.footer())
 tot = sum(sizes.values())
 for k, v in sizes.items():
