@@ -1,12 +1,12 @@
 <!--
-  NEO-DELHI GRID · 2099 — GitHub profile of Aniket Chauhan
+  NEON GRID · 2099 — GitHub profile of Aniket Chauhan
   Every visual lives in /assets as an animated SVG (pure CSS/SMIL, no JavaScript).
   Typefaces are embedded as renamed subsets under the SIL Open Font License 1.1.
 -->
 
 <div align="center">
 
-<img src="assets/hero.svg" width="100%" alt="Aniket Chauhan — UI/UX Designer and Developer, AI Content Designer at ConveGenius.AI, shown as a hologram above an animated futuristic Neo-Delhi skyline with hover cars, a maglev train, a glowing lotus dome and a neon minar">
+<img src="assets/hero.svg" width="100%" alt="Aniket Chauhan — UI/UX Designer and Developer, AI Content Designer at ConveGenius.AI, shown as a hologram above an animated futuristic neon city skyline with hover cars, a maglev train, a glowing lotus dome and a neon minar">
 
 <img src="assets/typing.svg" width="100%" alt="Typing terminal: designing UI/UX that makes learning click · turning maths lessons into playable worlds · crafting 3D storybooks with games inside · designing it, then building it in code · design × technology × storytelling">
 
@@ -23,7 +23,7 @@
 - 🎨 **Design** — UI/UX designer: user flows, interfaces, motion and visual storytelling, from first sketch to polished screen
 - 💻 **Develop** — I build what I design in HTML, CSS, JavaScript, TypeScript and React, with Three.js for real-time 3D
 - 🛰️ **Now** — AI Content Designer at **ConveGenius.AI**, designing and coding learning games and 3D storybooks for classrooms
-- 🎮 **Shipped** — 17 live builds: maths adventures, a 3D bike race, interactive flipbooks, a 3D portfolio
+- 🎮 **Shipped** — 17 live builds: maths adventures, a 3D bike race, 3D storybooks with games inside, interactive flipbooks
 - 🎓 **Studied** — BA English Language & Literature, Delhi University &nbsp;·&nbsp; 📍 Delhi, India
 
 <br>
@@ -51,10 +51,10 @@
   <a href="https://cannon-quest.vercel.app"><img src="assets/projects/cannon-quest.svg" width="49%" alt="Cannon Quest — the game's real title screen with the cannon and the caged x, plus two operation orbs popping out of the card. A 2D algebra game. Live demo."></a>
   <a href="https://bike-game-gamma.vercel.app"><img src="assets/projects/uttarakhand-riders.svg" width="49%" alt="Uttarakhand Riders — the game's real title screen, with the green superbike riding out of the card. A 3D superbike race from Ramnagar to Ranikhet, built with Three.js. Live demo."></a>
   <a href="https://profit-and-discount-game.vercel.app"><img src="assets/projects/the-best-deal.svg" width="49%" alt="The Best Deal — the game's real start screen with Amit in the mall, and a stack of books popping out of the card. A voiced profit and discount story game in six Indian languages. Live demo."></a>
-  <a href="https://ira-rahman-construction.vercel.app"><img src="assets/projects/irha-construction.svg" width="49%" alt="Irha Construction — the company logo over the site's own construction photos. A scroll-driven website where a 3D excavator drives through a construction site. Live demo."></a>
-  <a href="https://portfolio-aniket-five.vercel.app"><img src="assets/projects/nexus-play-studio.svg" width="49%" alt="NEXUS Play Studio — turns a PowerPoint lesson into a playable learning game with Claude and human approval. Private project; more on the portfolio."></a>
   <a href="https://distance-formula.vercel.app"><img src="assets/projects/distance-formula.svg" width="49%" alt="Distance Formula — the game's real title screen with Swifty the bird. A whole maths lesson as one game. Live demo."></a>
-  <a href="https://portfolio-aniket-five.vercel.app"><img src="assets/projects/portfolio-3d.svg" width="49%" alt="3D Portfolio — a capture of the live site's hero: my name beside the 3D robot. Real-time 3D, orbiting skill planets, playable builds and 25 design case studies. Live demo."></a>
+  <a href="https://powerupp-bots.vercel.app"><img src="assets/projects/power-up-bots.svg" width="49%" alt="Power Up, Bots! — the book's real cover: a little robot and a cheering girl on a neon stage, with two of the game's bots popping out of the card. A 3D maths picture book with a laser game about cutting blocks into equal halves. Live demo."></a>
+  <a href="https://fishrescue.vercel.app"><img src="assets/projects/fish-rescue.svg" width="49%" alt="The Great Fish Rescue — the book's real cover: cartoon fish, a boy and a princess on a desert beach, with two fish swimming out of the card. A 3D storybook with colour-sorting and counting games inside. Live demo."></a>
+  <a href="https://byte-save.vercel.app"><img src="assets/projects/byte-saves-the-day.svg" width="49%" alt="Byte Saves the Day — the book's real cover: Byte the robot carrying a parcel through a futuristic city, with the bunny from its game popping out of the card. A 3D storybook with two games bound into the story. Live demo."></a>
 </p>
 
 <p align="center"><sub>
@@ -64,7 +64,9 @@
 <a href="https://github.com/aniketchauhan-star/bike-game">bike-game</a> ·
 <a href="https://github.com/aniketchauhan-star/profit-and-discount-game">profit-and-discount-game</a> ·
 <a href="https://github.com/aniketchauhan-star/distance-formula">distance-formula</a> ·
-<a href="https://github.com/aniketchauhan-star/portfolio-Aniket">portfolio-Aniket</a>
+<a href="https://github.com/aniketchauhan-star/powerupp-bots">powerupp-bots</a> ·
+<a href="https://github.com/aniketchauhan-star/fishrescue">fishrescue</a> ·
+<a href="https://github.com/aniketchauhan-star/byte-save">byte-save</a>
 </sub></p>
 
 <br>
@@ -75,9 +77,6 @@
 
 | 3D storybook | What happens inside | Launch |
 |:--|:--|:-:|
-| 🤖 **Power Up, Bots!** | A maths picture book that turns in 3D. Cut an energy block into equal halves with a laser to charge the bots | [▶ Play](https://powerupp-bots.vercel.app)<br>[Code](https://github.com/aniketchauhan-star/powerupp-bots) |
-| 🐟 **The Great Fish Rescue** | Find the desert ponds, then sort and count fish in two games bound into the book | [▶ Play](https://fishrescue.vercel.app)<br>[Code](https://github.com/aniketchauhan-star/fishrescue) |
-| 💾 **Byte Saves the Day** | Byte's Energy Hunt and Right & Left, played between the pages | [▶ Play](https://byte-save.vercel.app)<br>[Code](https://github.com/aniketchauhan-star/byte-save) |
 | 🌸 **The Royal Bloom Fest** | Aru and Pari's palace festival, with a heavier-or-lighter weighing game on page five | [▶ Play](https://bloom-fest-tawny.vercel.app)<br>[Code](https://github.com/aniketchauhan-star/bloom-fest-) |
 | 🎉 **Saving the Parade** | Story pages with the PowerUp Bots equal-parts game bound in after page three | [▶ Play](https://saving-the-parade.vercel.app)<br>[Code](https://github.com/aniketchauhan-star/saving-the-parade) |
 | 🏰 **The Palace Turns 25** | Six story clips, then a party page with tappable hotspots: disco ball, Gogo's dance and bubbles | [▶ Play](https://palace-turn-24.vercel.app)<br>[Code](https://github.com/aniketchauhan-star/palace-turn-24) |
@@ -89,7 +88,7 @@
 | Mini learning game | What you do | Launch |
 |:--|:--|:-:|
 | 🪶 **Heavy and Light** | Eight rounds on a working balance scale, from apple vs watermelon to dog vs elephant | [▶ Play](https://heavy-and-light-game.vercel.app)<br>[Code](https://github.com/aniketchauhan-star/heavy-and-light-game-) |
-| 📍 **Co-Ordinate Geometry** | Missions on a coordinate grid, with cinematic intros and voiced briefings | [▶ Play](https://co-ordinate-geometry.vercel.app)<br>[Code](https://github.com/aniketchauhan-star/Co-Ordinate-Geometry) |
+| 📍 **Co-Ordinate Geometry** | Play air traffic controller: fly aircraft across an ocean chart, then name the axes, the origin, (x, y) and the four quadrants | [▶ Play](https://co-ordinate-geometry.vercel.app)<br>[Code](https://github.com/aniketchauhan-star/Co-Ordinate-Geometry) |
 
 </div>
 

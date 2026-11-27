@@ -23,7 +23,7 @@ def typing():
         "design × technology × storytelling",
     ]
     size = 22
-    prompt = "aniket@neo-delhi:~$"
+    prompt = "aniket@portfolio:~$"
     pw = W("m", prompt + " ", size)
     widths = [W("m", p, size) for p in phrases]
     maxw = max(widths)
@@ -133,7 +133,7 @@ def identity():
     card = f"""
 <path d="M54,30 H390 V346 L366,370 H30 V54 Z" fill="url(#cardG)" stroke="{CYAN}" stroke-opacity=".55" stroke-width="1.5"/>
 <path d="M30,54 L54,30" stroke="{CYAN}" stroke-width="2"/>
-{T(52, 58, "CITIZEN ID // NEO-DELHI", "m", 11, CYAN, ls=2, extra='opacity=".8"')}
+{T(52, 58, "CITIZEN ID // NEON GRID", "m", 11, CYAN, ls=2, extra='opacity=".8"')}
 <circle cx="{cx}" cy="{cy}" r="86" stroke="{CYAN}" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="3 7" class="spin"/>
 <circle cx="{cx}" cy="{cy}" r="78" stroke="{MAGENTA}" stroke-opacity=".35" stroke-width="1" stroke-dasharray="40 14" class="spinR"/>
 <polygon points="{hex_points(cx, cy, 66, 0)}" fill="url(#hexG)" stroke="url(#hexS)" stroke-width="2.2"/>
@@ -213,7 +213,7 @@ def identity():
 <rect x="{tx0}" y="{ty0}" width="{tx1 - tx0}" height="{ty1 - ty0}" rx="12" fill="#070A1C" stroke="#2A2F6A" stroke-width="1.5"/>
 <path d="M{tx0 + 12},{ty0} H{tx1 - 12} A12,12 0 0 1 {tx1},{ty0 + 12} V{ty0 + 34} H{tx0} V{ty0 + 12} A12,12 0 0 1 {tx0 + 12},{ty0} Z" fill="#0E1230"/>
 <circle cx="{tx0 + 22}" cy="{ty0 + 17}" r="5" fill="{MAGENTA}"/><circle cx="{tx0 + 40}" cy="{ty0 + 17}" r="5" fill="{AMBER}"/><circle cx="{tx0 + 58}" cy="{ty0 + 17}" r="5" fill="{CYAN}"/>
-{T((tx0 + tx1) / 2, ty0 + 22, "aniket@neo-delhi: ~/profile", "m", 13, DIM, ls=1, anchor="middle")}
+{T((tx0 + tx1) / 2, ty0 + 22, "aniket@portfolio: ~/profile", "m", 13, DIM, ls=1, anchor="middle")}
 <g clip-path="url(#termClip)"><g class="tg">{''.join(rows)}{''.join(covers)}</g></g>
 <rect x="{tx0}" y="{ty0}" width="{tx1 - tx0}" height="{ty1 - ty0}" rx="12" stroke="url(#termS)" stroke-width="1.5"/>
 """
@@ -433,26 +433,6 @@ def art_uri(name):
         return "data:image/webp;base64," + _b64.b64encode(fh.read()).decode("ascii")
 
 
-def ill_studio(a):
-    """NEXUS Play Studio has no public game art, so its banner is drawn: slide -> game."""
-    return f"""
-<rect x="-96" y="-44" width="72" height="54" rx="5" fill="#120A35" stroke="#E6DDFF" stroke-width="1.6"/>
-<rect x="-96" y="-44" width="72" height="12" rx="5" fill="{a}" fill-opacity=".55"/>
-<path d="M-86,-20 H-40 M-86,-10 H-52 M-86,0 H-46" stroke="#CFC8FF" stroke-opacity=".7" stroke-width="2.5" stroke-linecap="round"/>
-<text x="-60" y="30" class="m" font-size="11" fill="{DIM}" text-anchor="middle" letter-spacing="2">PPTX</text>
-<path d="M-16,-17 H18" stroke="{a}" stroke-width="2" stroke-dasharray="5 6" class="flow"/>
-<path d="M16,-23 L26,-17 L16,-11 Z" fill="{a}"/>
-<rect x="32" y="-38" width="64" height="40" rx="20" fill="#120A35" stroke="{INK}" stroke-width="1.8"/>
-<path d="M44,-18 H58 M51,-25 V-11" stroke="{a}" stroke-width="2.6" stroke-linecap="round"/>
-<circle cx="76" cy="-22" r="3.4" fill="{MAGENTA}"/><circle cx="85" cy="-14" r="3.4" fill="{CYAN}"/>
-<text x="64" y="30" class="m" font-size="11" fill="{DIM}" text-anchor="middle" letter-spacing="2">GAME</text>
-<g class="twk" style="transform-origin:0px -70px"><path d="M0,-86 Q3,-73 16,-70 Q3,-67 0,-54 Q-3,-67 -16,-70 Q-3,-73 0,-86 Z" fill="{AMBER}"/></g>
-<text x="0" y="-38" class="m" font-size="10" fill="{AMBER}" text-anchor="middle" letter-spacing="2">AI</text>
-<rect x="-70" y="50" width="140" height="22" rx="11" fill="#0F1236" stroke="{LIME}" stroke-opacity=".6"/>
-<text x="0" y="65" class="m" font-size="10.5" fill="{LIME}" text-anchor="middle" letter-spacing="1.5">HUMAN APPROVES</text>
-"""
-
-
 # banner: real art from the game (assets/source/art, 800x400 = 2:1)
 # sprites: (art file, x, y, width, height, float class) -- pop-outs that break the frame
 CARDS = [
@@ -475,21 +455,25 @@ CARDS = [
          sprites=[("the-best-deal-sprite.webp", 430, 234, 150, 93, "fa")],
          desc="A voiced story game about discounts: Amit buys a book, picks sneakers, then hunts the mall for the best deals for Rohan's party. Playable in six languages.",
          chips=["JAVASCRIPT", "I18N", "VOICE-OVER"], live=True, url="https://profit-and-discount-game.vercel.app"),
-    dict(slug="irha-construction", title="IRHA CONSTRUCTION", sector="SECTOR 05 // 3D WEB", acc=AMBER,
-         banner="irha-construction-banner.webp",
-         desc="A scroll-driven website where a 3D excavator drives you through a live construction site: the gate, the cranes, the material yard and a finished tower.",
-         chips=["REACT", "THREE.JS", "GSAP", "FRAMER"], live=True, url="https://ira-rahman-construction.vercel.app"),
-    dict(slug="nexus-play-studio", title="NEXUS PLAY STUDIO", sector="SECTOR 06 // AI TOOLING", acc=VIOLET, ill=ill_studio,
-         desc="Turns a PowerPoint lesson into a playable learning game. Claude drafts the learning map and blueprint, a human approves, and trusted templates build it.",
-         chips=["TYPESCRIPT", "REACT", "FASTIFY", "CLAUDE"], live=False, private=True, url="https://portfolio-aniket-five.vercel.app"),
-    dict(slug="distance-formula", title="DISTANCE FORMULA", sector="SECTOR 07 // GEOMETRY", acc=LIME,
+    dict(slug="distance-formula", title="DISTANCE FORMULA", sector="SECTOR 05 // GEOMETRY", acc=LIME,
          banner="distance-formula-banner.webp",
          desc="A whole maths lesson as one game, led by Swifty the voiced bird: plot the points, find the gaps, close the right triangle and let Pythagoras finish it.",
          chips=["JAVASCRIPT", "SVG", "WEB AUDIO"], live=True, url="https://distance-formula.vercel.app"),
-    dict(slug="portfolio-3d", title="3D PORTFOLIO", sector="SECTOR 08 // PERSONAL SITE", acc=CYAN,
-         banner="portfolio-3d-banner.webp",
-         desc="My personal site: a real-time 3D scene, orbiting skill planets, playable game builds and 25 design case studies across UI, brand and packaging.",
-         chips=["NEXT.JS", "R3F", "GSAP", "TAILWIND"], live=True, url="https://portfolio-aniket-five.vercel.app"),
+    dict(slug="power-up-bots", title="POWER UP, BOTS!", sector="SECTOR 06 // 3D STORYBOOK", acc=VIOLET,
+         banner="power-up-bots-banner.webp", art_note="Banner: the book's real cover.",
+         sprites=[("power-up-bots-bot2.webp", 398, 238, 80, 82, "fb"), ("power-up-bots-bot1.webp", 468, 212, 118, 108, "fa")],
+         desc="A maths picture book that opens like a real hardcover. After the story, rotate a laser and cut energy blocks into two equal halves to charge the bots.",
+         chips=["CSS 3D", "JAVASCRIPT", "VOICE-OVER"], live=True, url="https://powerupp-bots.vercel.app"),
+    dict(slug="fish-rescue", title="THE GREAT FISH RESCUE", sector="SECTOR 07 // 3D STORYBOOK", acc=AMBER,
+         banner="fish-rescue-banner.webp", art_note="Banner: the book's real cover.",
+         sprites=[("fish-rescue-fish2.webp", 404, 262, 84, 57, "fb"), ("fish-rescue-fish1.webp", 474, 236, 110, 66, "fa")],
+         desc="A storybook set in the desert: find four hidden ponds, then steer each fish into the stream of its colour and count them, in two games bound into the book.",
+         chips=["CSS 3D", "JAVASCRIPT", "WEB AUDIO"], live=True, url="https://fishrescue.vercel.app"),
+    dict(slug="byte-saves-the-day", title="BYTE SAVES THE DAY", sector="SECTOR 08 // 3D STORYBOOK", acc=CYAN,
+         banner="byte-saves-the-day-banner.webp", art_note="Banner: the book's real cover.",
+         sprites=[("byte-saves-the-day-bunny.webp", 466, 206, 112, 118, "fa")],
+         desc="A hardcover storybook with real thickness: Byte's Energy Hunt and Right & Left open inside its pages, then turn the page themselves when you finish.",
+         chips=["CSS 3D", "JAVASCRIPT", "WEB AUDIO"], live=True, url="https://byte-save.vercel.app"),
 ]
 
 
@@ -501,12 +485,7 @@ def card(c):
     out = [f'<path d="{frame}" fill="url(#cg)"/>']
     # ---- banner: the game's own art, with scanlines, shades and a passing glare
     ban = []
-    if c.get("banner"):
-        ban.append(f'<image href="{art_uri(c["banner"])}" x="{BX}" y="{BY}" width="{BW_}" height="{BH_}" preserveAspectRatio="xMidYMid slice"/>')
-    else:
-        ban.append(f'<rect x="{BX}" y="{BY}" width="{BW_}" height="{BH_}" fill="url(#nb)"/>'
-                   f'<rect x="{BX}" y="{BY}" width="{BW_}" height="{BH_}" fill="url(#gridC)"/>'
-                   f'<g transform="translate(300 150) scale(1.35)">{c["ill"](a)}</g>')
+    ban.append(f'<image href="{art_uri(c["banner"])}" x="{BX}" y="{BY}" width="{BW_}" height="{BH_}" preserveAspectRatio="xMidYMid slice"/>')
     ban.append(f'<rect x="{BX}" y="{BY}" width="{BW_}" height="{BH_}" fill="url(#scan)"/>')
     ban.append(f'<rect x="{BX}" y="{BY}" width="{BW_}" height="80" fill="url(#topShade)"/>')
     ban.append(f'<rect x="{BX}" y="{BY + BH_ - 96}" width="{BW_}" height="96" fill="url(#botFade)"/>')
@@ -525,12 +504,7 @@ def card(c):
                            f'class="stk" style="animation-delay:-{k * .23:.2f}s"/>')
         out.append(f'<g class="{cls}"><image href="{art_uri(f)}" x="{x}" y="{y}" width="{w}" height="{h}"/></g>')
     # ---- chips over the art
-    if c["live"]:
-        lab, col = "LIVE", LIME
-    elif c.get("private"):
-        lab, col = "PRIVATE", VIOLET
-    else:
-        lab, col = "SOURCE", AMBER
+    lab, col = ("LIVE", LIME) if c["live"] else ("SOURCE", AMBER)
     st = W("m", lab, 11, 2) + 34
     out.append(f'<rect x="{574 - st:.1f}" y="24" width="{st:.1f}" height="26" rx="13" fill="#07061A" fill-opacity=".82" stroke="{col}" stroke-opacity=".85"/>')
     out.append(f'<circle cx="{574 - st + 14:.1f}" cy="37" r="4" fill="{col}" class="pulse"/>')
@@ -552,9 +526,9 @@ def card(c):
         out.append(f'<rect x="{cx:.1f}" y="430" width="{w:.1f}" height="24" rx="12" fill="#0F1236" stroke="{a}" stroke-opacity=".6"/>')
         out.append(T(cx + 10, 446, ch, "m", 11, "#D6DEFF", ls=1.2))
         cx += w + 8
-    cta = "LAUNCH" if c["live"] else ("PORTFOLIO" if c.get("private") else "VIEW CODE")
+    cta = "LAUNCH" if c["live"] else "VIEW CODE"
     out.append(T(554, 447, cta, "m", 12, a, ls=2.5, anchor="end"))
-    if c["live"] or c.get("private"):
+    if c["live"]:
         out.append(f'<path d="M560,437 l9,5.5 l-9,5.5 Z" fill="{a}" class="nudge"/>')
     else:
         out.append(f'<path d="M563,437 l-4,5.5 l4,5.5 M568,437 l4,5.5 l-4,5.5" stroke="{a}" stroke-width="1.6" class="nudge"/>')
@@ -565,9 +539,7 @@ def card(c):
            ".fb{animation:fb 2.9s ease-in-out infinite alternate}@keyframes fb{from{transform:translateY(4px)}to{transform:translateY(-6px)}}"
            ".glare{animation:glare 7s ease-in-out infinite}@keyframes glare{0%{transform:translateX(-170px)}55%,100%{transform:translateX(760px)}}"
            ".pulse{animation:pulse 1.3s ease-in-out infinite alternate}@keyframes pulse{from{opacity:.3}to{opacity:1}}"
-           ".nudge{animation:nudge 1.6s ease-in-out infinite}@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}"
-           ".flow{animation:flow .8s linear infinite}@keyframes flow{to{stroke-dashoffset:-11}}"
-           ".twk{animation:twk 2s ease-in-out infinite alternate}@keyframes twk{from{transform:scale(.7);opacity:.6}to{transform:scale(1.1);opacity:1}}")
+           ".nudge{animation:nudge 1.6s ease-in-out infinite}@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}")
     defs = f"""
 <linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#110C38"/><stop offset="1" stop-color="#08071E"/></linearGradient>
 <pattern id="gridC" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24,0 H0 V24" stroke="#1A1F4A" stroke-opacity=".55"/></pattern>
@@ -578,12 +550,10 @@ def card(c):
 <linearGradient id="glareG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".16"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
 <linearGradient id="hair" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{a}" stop-opacity="0"/><stop offset=".5" stop-color="{a}"/><stop offset="1" stop-color="{a}" stop-opacity="0"/></linearGradient>
 <radialGradient id="pop"><stop offset="0" stop-color="{a}" stop-opacity=".55"/><stop offset="1" stop-color="{a}" stop-opacity="0"/></radialGradient>
-<radialGradient id="nb" cx=".5" cy=".45" r=".75"><stop offset="0" stop-color="#2A1A6E"/><stop offset="1" stop-color="#07061A"/></radialGradient>
 """
     title = c["title"].title().replace("'S", "'s")
-    status = ("Live demo" if c["live"] else
-              ("Private project, more on the portfolio" if c.get("private") else "Source code"))
-    art = "Banner: the game's real title screen." if c.get("banner") else "Banner: a drawn illustration."
+    status = "Live demo" if c["live"] else "Source code"
+    art = c.get("art_note", "Banner: the game's real title screen.")
     return doc(WD, HT, f"{title} — project card", f'{c["desc"]} Built with {", ".join(c["chips"]).title()}. {status}. {art}',
                ["o7", "m", "s"], css, "\n".join(out), defs)
 
@@ -679,7 +649,7 @@ def footer():
 </g>
 {T(600, 62, "END OF TRANSMISSION", "o7", 26, "none", ls=7, anchor="middle", extra=f'stroke="{CYAN}" stroke-opacity=".3" stroke-width="7" stroke-linejoin="round"')}
 {T(600, 62, "END OF TRANSMISSION", "o7", 26, INK, ls=7, anchor="middle", cls="gl")}
-{T(600, 92, "DESIGNED × DEVELOPED WITH CURIOSITY  ·  NEO-DELHI GRID", "m", 13, "#FF9CEB", ls=2.5, anchor="middle")}
+{T(600, 92, "DESIGNED × DEVELOPED WITH CURIOSITY  ·  NEON GRID", "m", 13, "#FF9CEB", ls=2.5, anchor="middle")}
 <rect x="1" y="1" width="{WD - 2}" height="{HT - 2}" rx="20" stroke="url(#ffr)" stroke-width="1.6"/>
 """
     defs = f"""<linearGradient id="fbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05010E"/><stop offset=".6" stop-color="#1A0640"/><stop offset="1" stop-color="#070214"/></linearGradient>

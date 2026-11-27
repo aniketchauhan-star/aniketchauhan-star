@@ -1,4 +1,4 @@
-"""Hero banner: an animated Neo-Delhi skyline with flying cars, a maglev,
+"""Hero banner: an animated neon city skyline with flying cars, a maglev,
 a fluted Neo-Minar, a glowing Neo-Lotus and a holographic name."""
 import math
 import random
@@ -311,7 +311,7 @@ def title_block():
     tw = W("o9", name, size, ls)
     role = "UI/UX DESIGNER  ·  DEVELOPER  ·  AI CONTENT DESIGNER"
     sub = "@ CONVEGENIUS.AI  //  DESIGNS THAT SHIP AS WORKING CODE"
-    label = "NEO-DELHI GRID  ·  2099  ·  SYSTEM ONLINE"
+    label = "NEON GRID  ·  2099  ·  SYSTEM ONLINE"
     lw = W("m", label, 13, 4)
     y_name = 154
     x0, x1 = cx - tw / 2 - 26, cx + tw / 2 + 26
@@ -346,7 +346,7 @@ def hud():
 <path d="{corners}" stroke="{c}" stroke-width="2.5"/>
 {T(40, 40, "SYS://ANIKET.CHAUHAN", "m", 12, "#9EF7FF", ls=2, extra='opacity=".8"')}
 {T(WD - 40, 40, "28.61°N  77.21°E", "m", 12, "#9EF7FF", ls=2, anchor="end", extra='opacity=".8"')}
-{T(40, 536, "GRID-07 · NEO-DELHI", "m", 12, "#FFB3F0", ls=2, extra='opacity=".85"')}
+{T(40, 536, "GRID-07 · NEON CITY", "m", 12, "#FFB3F0", ls=2, extra='opacity=".85"')}
 {T(1100, 536, "UPLINK STABLE", "m", 12, "#FFB3F0", ls=2, anchor="end", extra='opacity=".85"')}
 {bars}
 """
@@ -550,6 +550,6 @@ def build():
 """
     return doc(WD, HT,
                "Aniket Chauhan — UI/UX Designer & Developer · AI Content Designer",
-               "Animated futuristic Neo-Delhi skyline at night: neon towers, a fluted Neo-Minar, a glowing "
+               "Animated futuristic neon city skyline at night: neon towers, a fluted Neo-Minar, a glowing "
                "Neo-Lotus, hover cars and a maglev train, with the holographic name Aniket Chauhan.",
                ["o9", "m", "sb"], CSS + car_css + floor_css + marq_css, body, defs)
