@@ -14,8 +14,6 @@
 <a href="https://portfolio-aniket-five.vercel.app"><img src="assets/buttons/portfolio.svg" height="56" alt="Portfolio"></a>
 <a href="mailto:aniketchauhanac2005@gmail.com"><img src="assets/buttons/email.svg" height="56" alt="Email"></a>
 
-<img src="https://komarev.com/ghpvc/?username=aniketchauhan-star&label=VISITORS%20LOGGED&color=00f0ff&style=for-the-badge" alt="Profile visitors">
-
 </div>
 
 <br>
