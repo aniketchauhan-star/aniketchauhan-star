@@ -14,7 +14,11 @@ def pct(t, total):
 
 # ======================================================================= typing
 def typing():
-    WD, HT = 1200, 72
+    """A terminal window: tabbed title bar, powerline prompt, typed lines and
+    a carousel indicator that tracks which line is showing. Every icon is a
+    vector path, because the embedded font subsets carry no symbol glyphs."""
+    WD, HT, TB = 1200, 112, 38          # canvas, title-bar height
+    CY = TB + (HT - TB) / 2             # body centre line
     phrases = [
         "designing UI/UX that makes learning click",
         "turning maths lessons into playable worlds",
@@ -22,18 +26,96 @@ def typing():
         "designing it, then building it in code",
         "design × technology × storytelling",
     ]
-    size = 22
-    prompt = "aniket@portfolio:~$"
-    pw = W("m", prompt + " ", size)
+    NIGHT = "#07061A"
+    HAIR = "#262257"
+    DARK = "#16062B"
+
+    # ---------------------------------------------------------- title bar
+    tab_x, tab_txt = 92, "aniket — zsh"
+    tab_w = 14 + 13 + 9 + W("m", tab_txt, 12) + 16 + 7 + 12
+    tab_d = (f"M{tab_x},{TB}V15Q{tab_x},7 {tab_x + 8},7H{tab_x + tab_w - 8}"
+             f"Q{tab_x + tab_w},7 {tab_x + tab_w},15V{TB}Z")
+    ti = tab_x + 14
+    tcy = TB / 2 + 3
+    title = [
+        f'<rect width="{WD}" height="{TB}" fill="{NIGHT}"/>',
+        f'<path d="M1,{TB}H{tab_x}M{tab_x + tab_w:.1f},{TB}H{WD - 1}" stroke="{HAIR}"/>',
+        f'<circle cx="26" cy="{TB / 2}" r="5.5" fill="{MAGENTA}"/>'
+        f'<circle cx="45" cy="{TB / 2}" r="5.5" fill="{AMBER}"/>'
+        f'<circle cx="64" cy="{TB / 2}" r="5.5" fill="{LIME}"/>',
+        f'<path d="{tab_d}" fill="url(#tbg)"/>',
+        f'<rect x="{tab_x + 8}" y="7" width="{tab_w - 16:.1f}" height="2" rx="1" fill="url(#tst)"/>',
+        # terminal glyph: window, chevron, underscore
+        f'<rect x="{ti}" y="{tcy - 6}" width="13" height="11" rx="2.2" stroke="{CYAN}" stroke-width="1.3"/>'
+        f'<path d="M{ti + 3},{tcy - 2.6}l2.4,2.1-2.4,2.1M{ti + 7},{tcy + 2.1}h3" stroke="{CYAN}" '
+        f'stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>',
+        T(ti + 22, tcy + 4, tab_txt, "m", 12, INK),
+        f'<path d="M{tab_x + tab_w - 19:.1f},{tcy - 3.5}l7,7m0-7l-7,7" stroke="{DIM}" '
+        f'stroke-width="1.3" stroke-linecap="round" opacity=".7"/>',
+    ]
+    x = tab_x + tab_w + 22
+    for name, col in (("design.fig", VIOLET), ("build.tsx", CYAN), ("story.md", AMBER)):
+        title.append(f'<circle cx="{x + 3:.1f}" cy="{tcy}" r="3" fill="{col}"/>')
+        title.append(T(x + 13, tcy + 4, name, "m", 12, DIM))
+        x += 13 + W("m", name, 12) + 22
+        title.append(f'<path d="M{x - 11:.1f},{tcy - 7}v14" stroke="{HAIR}"/>')
+    title.append(f'<circle cx="1128" cy="{TB / 2}" r="4" fill="{LIME}" class="lv"/>')
+    title.append(T(1140, TB / 2 + 4, "LIVE", "m", 11, LIME, ls=2.5))
+
+    # ---------------------------------------------------- powerline prompt
+    SH, TIP = 30, 13
+    y0, y1 = CY - SH / 2, CY + SH / 2
+
+    def icon(kind, ix, c):
+        if kind == "user":
+            return (f'<circle cx="{ix + 6}" cy="{CY - 3.4}" r="3.3" fill="{c}"/>'
+                    f'<path d="M{ix},{CY + 6.5}c0-4 2.7-5.8 6-5.8s6 1.8 6 5.8z" fill="{c}"/>')
+        if kind == "folder":
+            return f'<path d="M{ix},{CY - 5.5}h4.6l1.8,2h6.6v9h-13z" fill="{c}"/>'
+        return (f'<g stroke="{c}" stroke-width="1.5" fill="none">'
+                f'<circle cx="{ix + 3}" cy="{CY - 5.5}" r="1.9"/><circle cx="{ix + 3}" cy="{CY + 5.5}" r="1.9"/>'
+                f'<circle cx="{ix + 10.5}" cy="{CY - 3.5}" r="1.9"/><path d="M{ix + 3},{CY - 3.6}v7.2"/>'
+                f'<path d="M{ix + 10.5},{CY - 1.6}c0,3.6-7.5,2-7.5,5.2"/></g>')
+
+    segs = [("aniket", "sb", 16, "url(#pl1)", DARK, "user", 5.6),
+            ("~/portfolio", "m", 14, "#6A45EE", INK, "folder", 4.8),
+            ("main", "m", 14, "#103656", CYAN, "branch", 4.8)]
+    x, laid = 24, []
+    for i, (txt, f, sz, fill, ink, kind, dy) in enumerate(segs):
+        pad = 12 if i == 0 else TIP + 10
+        extra = 18 if kind == "branch" else 0
+        w = pad + 13 + 9 + W(f, txt, sz) + extra + 10
+        laid.append((x, x + w, pad, txt, f, sz, fill, ink, kind, dy))
+        x += w
+    xe = x + TIP
+    prompt = []
+    for i, (a, b, pad, txt, f, sz, fill, ink, kind, dy) in reversed(list(enumerate(laid))):
+        if i == 0:
+            r = 7
+            d = (f"M{a + r},{y0}H{b:.1f}L{b + TIP:.1f},{CY}L{b:.1f},{y1}H{a + r}"
+                 f"Q{a},{y1} {a},{y1 - r}V{y0 + r}Q{a},{y0} {a + r},{y0}Z")
+        else:
+            d = f"M{a:.1f},{y0}H{b:.1f}L{b + TIP:.1f},{CY}L{b:.1f},{y1}H{a:.1f}Z"
+        g = [f'<path d="{d}" fill="{fill}" stroke="{NIGHT}" stroke-width="2" stroke-linejoin="round"/>',
+             icon(kind, a + pad, ink), T(a + pad + 22, CY + dy, txt, f, sz, ink)]
+        if kind == "branch":
+            cx_ = a + pad + 22 + W(f, txt, sz) + 8
+            g.append(f'<path d="M{cx_:.1f},{CY + 0.5}l3,3.2 6-6.6" stroke="{LIME}" stroke-width="1.8" '
+                     f'stroke-linecap="round" stroke-linejoin="round"/>')
+        prompt.append("".join(g))
+
+    # ------------------------------------------------------ typed phrases
+    size = 21
+    xp = xe + 18
     widths = [W("m", p, size) for p in phrases]
     maxw = max(widths)
-    x0 = (WD - (pw + maxw + 14)) / 2
-    xp = x0 + pw
     D = 4.6
     TT = D * len(phrases)
     css = [".cr{animation:cr 1s steps(1) infinite}@keyframes cr{0%,50%{opacity:1}51%,100%{opacity:0}}",
-           ".lv{animation:lv 1.4s ease-in-out infinite alternate}@keyframes lv{from{opacity:.3}to{opacity:1}}"]
-    groups = []
+           ".lv{animation:lv 1.4s ease-in-out infinite alternate}@keyframes lv{from{opacity:.3}to{opacity:1}}",
+           ".sw{animation:sw 9s linear infinite}@keyframes sw{0%{transform:translateX(0)}45%,100%{transform:translateX(1720px)}}"]
+    groups, marks = [], []
+    n_x = 1096
     for i, (p, w) in enumerate(zip(phrases, widths)):
         n = len(p)
         s = i * D
@@ -53,23 +135,43 @@ def typing():
         css.append(f"@keyframes c{i}{{{start}{{transform:translateX(0);animation-timing-function:steps({n},end)}}"
                    f"{p1}%,{p2}%{{transform:translateX({w:.2f}px);animation-timing-function:steps({n},end)}}"
                    f"{p3}%,100%{{transform:translateX(0)}}}}.c{i}{{animation:c{i} {TT}s linear infinite}}")
-        groups.append(f'<g class="v{i}">{T(xp, 44, p, "m", size, CYAN)}'
-                      f'<g class="c{i}"><rect x="{xp - 1:.1f}" y="15" width="{maxw + 70:.1f}" height="42" fill="url(#tbg)"/>'
-                      f'<rect x="{xp + 1:.1f}" y="24" width="11" height="24" fill="{CYAN}" class="cr"/></g></g>')
+        groups.append(f'<g class="v{i}">{T(xp, CY + 7.5, p, "m", size, INK)}'
+                      f'<g class="c{i}"><rect x="{xp - 1:.1f}" y="{CY - 22}" width="{maxw + 70:.1f}" height="44" fill="url(#tbg)"/>'
+                      f'<rect x="{xp + 1:.1f}" y="{CY - 12}" width="11" height="23" rx="1.5" fill="{CYAN}" '
+                      f'class="cr" filter="url(#glo)"/></g></g>')
+        dx = 1170 - (len(phrases) - 1 - i) * 13
+        marks.append(f'<g class="v{i}">{T(n_x - W("m", "/ 05", 12) - 6, CY + 4.5, f"{i + 1:02d}", "m", 12, INK, anchor="end")}'
+                     f'<rect x="{dx - 7}" y="{CY - 3}" width="14" height="6" rx="3" fill="{CYAN}"/></g>')
+    # Reduced motion: BASE_CSS stops every animation, so pin line one fully typed
+    # and hide the rest instead of leaving five stacked cursors and no words.
+    css.append("@media (prefers-reduced-motion:reduce){"
+               + ",".join(f".v{i}" for i in range(1, len(phrases)))
+               + f"{{opacity:0}}.c0{{transform:translateX({widths[0]:.2f}px)}}.cr{{opacity:1}}}}")
+    dots = "".join(f'<circle cx="{1170 - k * 13}" cy="{CY}" r="2.6" fill="#343A74"/>'
+                   for k in range(len(phrases)))
+
     defs = f"""<linearGradient id="tbg" x1="0" y1="0" x2="0" y2="{HT}" gradientUnits="userSpaceOnUse">
-<stop offset="0" stop-color="#0E0B30"/><stop offset="1" stop-color="#08061C"/></linearGradient>
-<linearGradient id="tst" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{CYAN}"/><stop offset=".5" stop-color="{VIOLET}"/><stop offset="1" stop-color="{MAGENTA}"/></linearGradient>"""
+<stop offset="0" stop-color="#110E36"/><stop offset="1" stop-color="#090721"/></linearGradient>
+<linearGradient id="tst" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="{CYAN}"/><stop offset=".5" stop-color="{VIOLET}"/><stop offset="1" stop-color="{MAGENTA}"/></linearGradient>
+<linearGradient id="pl1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF5BE0"/><stop offset="1" stop-color="#E01DBD"/></linearGradient>
+<linearGradient id="glr" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9EF7FF" stop-opacity="0"/><stop offset=".5" stop-color="#9EF7FF" stop-opacity=".06"/><stop offset="1" stop-color="#9EF7FF" stop-opacity="0"/></linearGradient>
+<filter id="glo" x="-150%" y="-60%" width="400%" height="220%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="win"><rect x="1" y="1" width="{WD - 2}" height="{HT - 2}" rx="16"/></clipPath>"""
     body = f"""
-<rect x="1" y="1" width="{WD - 2}" height="{HT - 2}" rx="14" fill="url(#tbg)"/>
-<circle cx="28" cy="36" r="5" fill="{MAGENTA}"/><circle cx="46" cy="36" r="5" fill="{AMBER}"/><circle cx="64" cy="36" r="5" fill="{CYAN}"/>
-{T(x0, 44, prompt, "m", size, "#FF7AE6")}
+<g clip-path="url(#win)">
+<rect width="{WD}" height="{HT}" fill="url(#tbg)"/>
+{''.join(title)}
+{''.join(prompt)}
 {''.join(groups)}
-<circle cx="1124" cy="36" r="4.5" fill="{LIME}" class="lv"/>
-{T(1136, 41, "LIVE", "m", 13, LIME, ls=2)}
-<rect x="1" y="1" width="{WD - 2}" height="{HT - 2}" rx="14" stroke="url(#tst)" stroke-opacity=".7" stroke-width="1.5"/>
+{dots}{''.join(marks)}
+{T(n_x, CY + 4.5, "/ 05", "m", 12, DIM, anchor="end")}
+<g class="sw"><rect x="-260" y="{TB}" width="220" height="{HT - TB}" fill="url(#glr)" transform="skewX(-18)"/></g>
+</g>
+<rect x="1" y="1" width="{WD - 2}" height="{HT - 2}" rx="16" stroke="url(#tst)" stroke-opacity=".75" stroke-width="1.5"/>
 """
     return doc(WD, HT, "Typing terminal",
-               "A terminal line typing: " + " · ".join(phrases), ["m"], "".join(css), body, defs)
+               "A terminal window with a powerline prompt (aniket · ~/portfolio · main) typing, one line at a time: "
+               + " · ".join(phrases), ["m", "sb"], "".join(css), body, defs)
 
 
 # ====================================================================== headers
