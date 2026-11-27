@@ -1,5 +1,14 @@
 ## Hi there 👋
 
+### 🎮 Featured game: Zippy's Crown Quest
+
+<a href="https://crown-quest-ten.vercel.app"><img src="images/crown-quest-title.jpg" alt="Zippy's Crown Quest title screen" width="49%"></a>
+<a href="https://crown-quest-ten.vercel.app"><img src="images/crown-quest-play.jpg" alt="Level 1: a crown on one side of a balance, five coins on the other, and three gold bars to choose from" width="49%"></a>
+
+A maths game for kids about linear equations. Zippy the monkey has to swap each crown for a gold bar of the same mass without tipping the balance and waking Grumble. Children start by trying bars on the balance, then write the balance as an equation, check a solution, and solve for x.
+
+**[▶ Play it](https://crown-quest-ten.vercel.app)** · [Code](https://github.com/aniketchauhan-star/crown-quest)
+
 <!--
 **aniketchauhan-star/aniketchauhan-star** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
